@@ -46,14 +46,18 @@ Each section maps to a course module. Every exercise lives in its own package wi
 
 ## 🚀 Progress
 
-| Section | Topics | Status |
-|---------|--------|--------|
-| **1. Basics** | Variables, types, control flow, slices, maps, functions, structs | ✅ In progress |
-| **2. Basics II** | Interfaces, errors, iota, generics | ⬜ Not started |
-| **3. Clean Code** | Packages, testing, benchmarks, profiling | ⬜ Not started |
-| **4. Concurrency** | Goroutines, channels, sync, context | ⬜ Not started |
-| **5. Stdlib** | IO, text, encoding, datetime, HTTP, SQL | ⬜ Not started |
-| **6. Final** | Capstone project | ⬜ Not started |
+| Section | Topics | Exercises | Status |
+|---------|--------|-----------|--------|
+| **1. Basics** | Variables, types, control flow, slices, maps, functions, structs | 9 | ✅ In progress |
+| ↳ basic-constructs | Variables, types, control flow | 4 | ✅ Done |
+| ↳ arrays-maps | Slices, maps, strings | 3 | ✅ Done |
+| ↳ functions-pointers | Functions, closures, pointers | 2 | ✅ Done |
+| ↳ structs-methods | Structs, methods, embedding | 0 | ⬜ Not started |
+| **2. Basics II** | Interfaces, errors, iota, generics | 0 | ⬜ Not started |
+| **3. Clean Code** | Packages, testing, benchmarks, profiling | 0 | ⬜ Not started |
+| **4. Concurrency** | Goroutines, channels, sync, context | 0 | ⬜ Not started |
+| **5. Stdlib** | IO, text, encoding, datetime, HTTP, SQL | 0 | ⬜ Not started |
+| **6. Final** | Capstone project | 0 | ⬜ Not started |
 
 ## 🛠 Run
 
