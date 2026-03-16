@@ -48,10 +48,10 @@ Each section maps to a course module. Every exercise lives in its own package wi
 
 | Section | Topics | Exercises | Status |
 |---------|--------|-----------|--------|
-| **1. Basics** | Variables, types, control flow, slices, maps, functions, structs | 9 | ✅ In progress |
+| **1. Basics** | Variables, types, control flow, slices, maps, functions, structs | 10 | ✅ In progress |
 | ↳ basic-constructs | Variables, types, control flow | 4 | ✅ Done |
 | ↳ arrays-maps | Slices, maps, strings | 3 | ✅ Done |
-| ↳ functions-pointers | Functions, closures, pointers | 2 | ✅ Done |
+| ↳ functions-pointers | Functions, closures, pointers | 3 | ✅ Done |
 | ↳ structs-methods | Structs, methods, embedding | 0 | ⬜ Not started |
 | **2. Basics II** | Interfaces, errors, iota, generics | 0 | ⬜ Not started |
 | **3. Clean Code** | Packages, testing, benchmarks, profiling | 0 | ⬜ Not started |
