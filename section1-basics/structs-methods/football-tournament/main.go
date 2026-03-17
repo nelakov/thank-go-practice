@@ -65,6 +65,12 @@ type tournament []match
 // calcRating calculates and returns the tournament rating
 func (t *tournament) calcRating() rating {
 	r := rating{}
+	// NOTE: += 0 lines don't change the score, but they register the team
+	// as a key in the map. Without them, a team that only lost and never
+	// drew or won would never appear in the rating.
+	//
+	// In Go, accessing a missing map key returns the zero value (0 for int),
+	// but does NOT create the key — so the team would be silently missing from output.
 	for _, m := range *t {
 		switch m.result {
 		case win:
