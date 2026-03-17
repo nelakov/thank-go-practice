@@ -29,31 +29,60 @@ type validator func(s string) bool
 // digits returns true if s contains at least one digit
 // according to unicode.IsDigit(), false otherwise
 func digits(s string) bool {
-	// ...
+	for _, r := range s {
+		if unicode.IsDigit(r) {
+			return true
+		}
+	}
+	return false
 }
 
 // letters returns true if s contains at least one letter
 // according to unicode.IsLetter(), false otherwise
 func letters(s string) bool {
-	// ...
+	for _, r := range s {
+		if unicode.IsLetter(r) {
+			return true
+		}
+	}
+	return false
 }
 
 // minlen returns a validator that checks whether the string length
 // according to utf8.RuneCountInString() is not less than the specified value
 func minlen(length int) validator {
-	// ...
+	return func(s string) bool {
+		if utf8.RuneCountInString(s) < length {
+			return false
+		}
+		return true
+	}
 }
 
 // and returns a validator that accepts a string and checks
 // that all funcs returned true for that string
 func and(funcs ...validator) validator {
-	// ...
+	return func(s string) bool {
+		for _, f := range funcs {
+			if !f(s) {
+				return false
+			}
+		}
+		return true
+	}
 }
 
 // or returns a validator that accepts a string and checks
 // that at least one of funcs returned true for that string
 func or(funcs ...validator) validator {
-	// ...
+	return func(s string) bool {
+		for _, f := range funcs {
+			if f(s) {
+				return true
+			}
+		}
+		return false
+	}
 }
 
 // password holds the password string value and a validator
@@ -65,7 +94,7 @@ type password struct {
 // isValid checks whether the password is valid
 // according to the password's assigned validator
 func (p *password) isValid() bool {
-	// ...
+	return p.validator(p.value)
 }
 
 // ┌──────────────────────────────────────┐
@@ -74,7 +103,10 @@ func (p *password) isValid() bool {
 
 func main() {
 	var s string
-	fmt.Scan(&s)
+	_, err := fmt.Scan(&s)
+	if err != nil {
+		return
+	}
 	// validator that checks the password contains letters and digits,
 	// or its length is at least 10 characters
 	validator := or(and(digits, letters), minlen(10))
