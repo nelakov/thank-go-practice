@@ -52,10 +52,10 @@ Each section maps to a course module. Every exercise lives in its own package wi
 | ↳ basic-constructs | Variables, types, control flow | 4 | ✅ Done |
 | ↳ arrays-maps | Slices, maps, strings | 3 | ✅ Done |
 | ↳ functions-pointers | Functions, closures, pointers | 3 | ✅ Done |
-| ↳ structs-methods | Structs, methods, embedding | 2 | ✅ In progress |
+| ↳ structs-methods | Structs, methods, embedding | 2 | ✅ Done |
 | **2. Basics II** | Interfaces, errors, iota, generics | 5 | ✅ In progress |
 | ↳ interfaces | Interfaces, polymorphism | 2 | ✅ In progress |
-| ↳ errors | Error handling, wrapping, custom types | 3 | ⬜ Not started |
+| ↳ errors | Error handling, wrapping, custom types | 3 | ✅ Done |
 | **3. Clean Code** | Packages, testing, benchmarks, profiling | 0 | ⬜ Not started |
 | **4. Concurrency** | Goroutines, channels, sync, context | 0 | ⬜ Not started |
 | **5. Stdlib** | IO, text, encoding, datetime, HTTP, SQL | 0 | ⬜ Not started |
