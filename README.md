@@ -54,7 +54,7 @@ Each section maps to a course module. Every exercise lives in its own package wi
 | ↳ functions-pointers | Functions, closures, pointers | 3 | ✅ Done |
 | ↳ structs-methods | Structs, methods, embedding | 2 | ✅ Done |
 | **2. Basics II** | Interfaces, errors, iota, generics | 5 | ✅ In progress |
-| ↳ interfaces | Interfaces, polymorphism | 2 | ✅ In progress |
+| ↳ interfaces | Interfaces, polymorphism | 2 | ✅ Done |
 | ↳ errors | Error handling, wrapping, custom types | 3 | ✅ Done |
 | **3. Clean Code** | Packages, testing, benchmarks, profiling | 0 | ⬜ Not started |
 | **4. Concurrency** | Goroutines, channels, sync, context | 0 | ⬜ Not started |
