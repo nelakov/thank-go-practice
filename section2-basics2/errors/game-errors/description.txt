@@ -1,0 +1,220 @@
+🤔 Game With No Room for Error
+
+In very small programs, wrapping errors is usually unnecessary. So let me say
+upfront: this exercise is unusually large. You will also get practice working
+with legacy Go code. This is the biggest exercise in the entire module, so
+consider it the level boss :)
+
+We are going to write a game where any error leads to a tragic ending. First
+we will walk through the code, then I will explain what needs to be done.
+
+═══════════════════════════════════════════════════════════════════════════════
+Command, Object, Step
+═══════════════════════════════════════════════════════════════════════════════
+
+In our game, a player executes certain commands on objects in the game world.
+There is a command type and a list of available commands:
+
+    type label string
+    type command label
+
+    var (
+        eat  = command("eat")
+        take = command("take")
+        talk = command("talk to")
+    )
+
+There are game world objects — type thing. Each object knows which commands
+are available to it:
+
+    type thing struct {
+        name    label
+        actions map[command]string
+    }
+
+    func (t thing) supports(action command) bool {
+        _, ok := t.actions[action]
+        return ok
+    }
+
+List of objects:
+
+    var (
+        apple    = thing{"apple", map[command]string{
+            eat:  "mmm, delicious!",
+            take: "you have an apple now",
+        }}
+        bob      = thing{"bob", map[command]string{
+            talk: "Bob says hello",
+        }}
+        coin     = thing{"coin", map[command]string{
+            take: "you have a coin now",
+        }}
+        mirror   = thing{"mirror", map[command]string{
+            take: "you have a mirror now",
+            talk: "mirror does not answer",
+        }}
+        mushroom = thing{"mushroom", map[command]string{
+            eat:  "tastes funny",
+            take: "you have a mushroom now",
+        }}
+    )
+
+There is a step type — a game step. It combines a command and the object on
+which the action must be performed:
+
+    type step struct {
+        cmd command
+        obj thing
+    }
+
+    func (s step) isValid() bool {
+        return s.obj.supports(s.cmd)
+    }
+
+═══════════════════════════════════════════════════════════════════════════════
+Player
+═══════════════════════════════════════════════════════════════════════════════
+
+There is a player — type player:
+
+    type player struct {
+        nEaten   int      // number of items eaten
+        nDialogs int      // number of dialogs
+        inventory []thing  // inventory
+    }
+
+The player can check whether an item is in their inventory:
+
+    func (p *player) has(obj thing) bool { ... }
+
+And perform an action on a given object:
+
+    func (p *player) do(cmd command, obj thing) error { ... }
+
+As you can see, things can go wrong here:
+  - the player has already eaten or talked, and does not want to anymore
+  - the item is already in the inventory
+
+For each such situation, the do() method returns an error.
+
+═══════════════════════════════════════════════════════════════════════════════
+Game
+═══════════════════════════════════════════════════════════════════════════════
+
+Finally, there is a game type — the game itself:
+
+    type game struct {
+        player *player
+        things map[label]int  // objects in the game world
+        nSteps int            // number of successfully completed steps
+    }
+
+Initially the game has a certain number of items of each type (things field).
+The game can check whether they are still available or have run out:
+
+    func (g *game) has(obj thing) bool { ... }
+
+The game can execute a step:
+
+    func (g *game) execute(st step) error { ... }
+
+In the execute() method, the sequence of actions is:
+  1. The game checks that the step is valid.
+  2. The game checks whether objects needed for the action remain.
+  3. The game delegates step execution to the player.
+  4. If something went wrong — the method returns an error.
+
+Example game with a specific sequence of steps:
+
+    func main() {
+        gm := newGame()
+        steps := []step{
+            {eat, apple},
+            {talk, bob},
+            {take, coin},
+            {eat, mushroom},
+        }
+        for _, st := range steps {
+            if err := tryStep(gm, st); err != nil {
+                fmt.Println(err)
+                os.Exit(1)
+            }
+        }
+        fmt.Println("You win!")
+    }
+
+Success:
+
+    trying to eat apple... OK
+    trying to talk to bob... OK
+    trying to take coin... OK
+    trying to eat mushroom... OK
+    You win!
+
+Failure:
+
+    trying to talk to bob... OK
+    trying to talk to bob... FAIL
+    you don't want to talk anymore
+    exit status 1
+
+═══════════════════════════════════════════════════════════════════════════════
+Task
+═══════════════════════════════════════════════════════════════════════════════
+
+As you can see from the code, errors are created via errors.New() and
+fmt.Errorf(). We want more structure, so add a separate type for each kind
+of error:
+
+    invalidStepError          — step command is not compatible with the object
+    notEnoughObjectsError     — the game has run out of objects of a certain type
+    commandLimitExceededError — the player exceeded the limit for a command
+    objectLimitExceededError  — the player exceeded the limit on objects of a
+                                certain type in their inventory
+
+The player.do() method should return one of these errors or nil.
+
+Also, create a top-level error:
+
+    type gameOverError struct {
+        nSteps int  // steps successfully completed before the error
+        // ...
+    }
+
+The game.execute() method should return either a gameOverError or nil.
+
+  - If execute() gets an error from player.do() — wrap it in gameOverError.
+  - If the error occurs in execute() itself — create the appropriate error
+    type, then wrap it in gameOverError.
+
+Finally, create a function giveAdvice() that gives the player advice on how
+to avoid the error in the future:
+
+    func giveAdvice(err error) string { ... }
+
+Rules for giveAdvice():
+  - Invalid step:    "things like 'COMMAND OBJECT' are impossible"
+  - No objects left:  "be careful with scarce OBJECTs"
+  - Ate too much:     "eat less"
+  - Talked too much:  "talk to less"
+  - Object limit:     "don't be greedy, LIMIT OBJECT is enough"
+
+Examples:
+
+    things like 'eat bob' are impossible
+    be careful with scarce mirrors
+    don't be greedy, 1 apple is enough
+
+═══════════════════════════════════════════════════════════════════════════════
+Summary
+═══════════════════════════════════════════════════════════════════════════════
+
+  1. Create separate error types and return them in appropriate cases.
+  2. Create gameOverError type and return it from game.execute().
+  3. Create giveAdvice() function that returns advice based on the error.
+
+The full program code is in the sandbox.
+
+Important: submit only the fragment marked with "begin solution" / "end
+solution" comments, not the entire code.
