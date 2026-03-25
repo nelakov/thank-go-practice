@@ -1,0 +1,47 @@
+// 🤔 Duplicator
+//
+// I wrote a Produce function that duplicates a given value:
+//
+//   func Produce(val int, n int) []int
+//
+// Unfortunately, it only works for integers:
+//
+//   intSlice := Produce(5, 3)   // [5 5 5] — works
+//   strSlice := Produce("o", 5) // [o o o o o] — doesn't work
+//
+// Rewrite Produce so that it works with values of any type.
+//
+// Submit only the code between "начало решения" and "конец решения" markers.
+//
+// Sample Output:
+//
+//   PASS
+
+package main
+
+import "fmt"
+
+// начало решения
+
+// Produce returns a slice of n copies of val.
+func Produce[T int | float64](val T, n int) []T {
+	vals := make([]T, n)
+	for i := range n {
+		vals[i] = val
+	}
+	return vals
+}
+
+// конец решения
+
+func main() {
+	// work
+	intSlice := Produce(5, 3)
+	fmt.Println(intSlice)
+	// [5 5 5]
+
+	// doesn't work yet
+	strSlice := Produce("o", 5)
+	fmt.Println(strSlice)
+	// [o o o o o]
+}
