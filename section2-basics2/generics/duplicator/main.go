@@ -24,7 +24,7 @@ import "fmt"
 // начало решения
 
 // Produce returns a slice of n copies of val.
-func Produce[T int | float64](val T, n int) []T {
+func Produce[T any](val T, n int) []T {
 	vals := make([]T, n)
 	for i := range n {
 		vals[i] = val
@@ -35,7 +35,7 @@ func Produce[T int | float64](val T, n int) []T {
 // конец решения
 
 func main() {
-	// work
+	// works
 	intSlice := Produce(5, 3)
 	fmt.Println(intSlice)
 	// [5 5 5]
