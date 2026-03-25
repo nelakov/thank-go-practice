@@ -11,7 +11,7 @@
 //
 // Rewrite Produce so that it works with values of any type.
 //
-// Submit only the code between "начало решения" and "конец решения" markers.
+// Submit only the code between "solution start" and "solution end" markers.
 //
 // Sample Output:
 //
@@ -21,7 +21,7 @@ package main
 
 import "fmt"
 
-// начало решения
+// solution start
 
 // Produce returns a slice of n copies of val.
 func Produce[T any](val T, n int) []T {
@@ -32,7 +32,7 @@ func Produce[T any](val T, n int) []T {
 	return vals
 }
 
-// конец решения
+// solution end
 
 func main() {
 	// works
