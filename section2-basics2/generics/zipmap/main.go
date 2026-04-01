@@ -28,7 +28,9 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // solution start
 
