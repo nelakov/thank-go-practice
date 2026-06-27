@@ -48,7 +48,7 @@ Each section maps to a course module. Every exercise lives in its own package wi
 
 | Section | Topics | Exercises | Status |
 |---------|--------|-----------|--------|
-| **1. Basics** | Variables, types, control flow, slices, maps, functions, structs | 12 | ✅ In progress |
+| **1. Basics** | Variables, types, control flow, slices, maps, functions, structs | 12 | 🚧 In progress |
 | ↳ basic-constructs | Variables, types, control flow | 4 | ✅ Done |
 | ↳ arrays-maps | Slices, maps, strings | 3 | ✅ Done |
 | ↳ functions-pointers | Functions, closures, pointers | 3 | ✅ Done |
@@ -58,7 +58,7 @@ Each section maps to a course module. Every exercise lives in its own package wi
 | ↳ errors | Error handling, wrapping, custom types | 3 | ✅ Done |
 | ↳ generics | Type parameters, constraints | 4 | ✅ Done |
 | ↳ iota | Enums with iota, bitwise traits | 1 | ✅ Done |
-| **3. Clean Code** | Packages, testing, benchmarks, profiling | 4 | ✅ In progress |
+| **3. Clean Code** | Packages, testing, benchmarks, profiling | 4 | 🚧 In progress |
 | ↳ packages-modules | Project layout, modules ([wordcount](https://github.com/nelakov/wordcount)) | 1 | ✅ Done |
 | ↳ tests | Testing, table-driven tests, mocking via interface | 3 | ✅ Done |
 | **4. Concurrency** | Goroutines, channels, sync, context | 0 | ⬜ Not started |
