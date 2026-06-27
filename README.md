@@ -1,14 +1,14 @@
-# 🎓 Thank Go Practice
+# Thank Go Practice
 
 [![Go](https://img.shields.io/badge/Go-1.26-00ADD8?logo=go&logoColor=white)](https://go.dev/)
 [![Course](https://img.shields.io/badge/Stepik-96832-green?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDgtMy41OSA4LTggNHoiLz48L3N2Zz4=)](https://stepik.org/course/96832)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Practice solutions for the [**"Thank Go!"**](https://stepik.org/course/96832) Stepik course — a hands-on journey through Go from basics to stdlib mastery.
+My solutions for the [**"Thank Go!"**](https://stepik.org/course/96832) Stepik course. Working through Go from the basics up to the standard library.
 
-## 🗂 Structure
+## Structure
 
-Each section maps to a course module. Every exercise lives in its own package with a `main.go` containing the task description and solution.
+Each section maps to a course module. Every exercise lives in its own package with a `main.go` that holds the task description and the solution.
 
 ```
 ├── section1-basics/
@@ -44,7 +44,7 @@ Each section maps to a course module. Every exercise lives in its own package wi
 └── section6-final/           # capstone project
 ```
 
-## 🚀 Progress
+## Progress
 
 | Section | Topics | Exercises | Status |
 |---------|--------|-----------|--------|
@@ -59,13 +59,13 @@ Each section maps to a course module. Every exercise lives in its own package wi
 | ↳ generics | Type parameters, constraints | 4 | ✅ Done |
 | ↳ iota | Enums with iota, bitwise traits | 1 | ✅ Done |
 | **3. Clean Code** | Packages, testing, benchmarks, profiling | 4 | ✅ In progress |
-| ↳ packages-modules | Project layout, modules — [wordcount ↗](https://github.com/nelakov/wordcount) | 1 | ✅ Done |
+| ↳ packages-modules | Project layout, modules ([wordcount](https://github.com/nelakov/wordcount)) | 1 | ✅ Done |
 | ↳ tests | Testing, table-driven tests, mocking via interface | 3 | ✅ Done |
 | **4. Concurrency** | Goroutines, channels, sync, context | 0 | ⬜ Not started |
 | **5. Stdlib** | IO, text, encoding, datetime, HTTP, SQL | 0 | ⬜ Not started |
 | **6. Final** | Capstone project | 0 | ⬜ Not started |
 
-## 🛠 Run
+## Run
 
 ```bash
 # Run a specific exercise
@@ -81,6 +81,6 @@ go test -race ./...
 go build ./...
 ```
 
-## 📝 License
+## License
 
 MIT
