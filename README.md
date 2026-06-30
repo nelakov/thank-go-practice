@@ -58,10 +58,10 @@ Each section maps to a course module. Every exercise lives in its own package wi
 | ↳ errors | Error handling, wrapping, custom types | 3 | ✅ Done |
 | ↳ generics | Type parameters, constraints | 4 | ✅ Done |
 | ↳ iota | Enums with iota, bitwise traits | 1 | ✅ Done |
-| **3. Clean Code** | Packages, testing, benchmarks, profiling | 6 | 🚧 In progress |
+| **3. Clean Code** | Packages, testing, benchmarks, profiling | 7 | 🚧 In progress |
 | ↳ packages-modules | Project layout, modules ([wordcount](https://github.com/nelakov/wordcount)) | 1 | ✅ Done |
 | ↳ tests | Testing, table-driven tests, mocking via interface | 3 | ✅ Done |
-| ↳ benchmarks | Benchmarking, library vs custom, set optimization | 2 | ✅ Done |
+| ↳ benchmarks | Benchmarking, library vs custom, set and search optimization | 3 | ✅ Done |
 | **4. Concurrency** | Goroutines, channels, sync, context | 0 | ⬜ Not started |
 | **5. Stdlib** | IO, text, encoding, datetime, HTTP, SQL | 0 | ⬜ Not started |
 | **6. Final** | Capstone project | 0 | ⬜ Not started |
